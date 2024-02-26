@@ -1,8 +1,11 @@
-FROM python:3.7
-
-RUN apt-get update -y 
-COPY ./ /app
+# Flask need to install as per the requirement
+FROM python:3.9
+RUN  apt-get update -y
+#Wroking directory where app is installed
 WORKDIR /app
-RUN pip install flask
-ENTRYPOINT [ "python" ]
-CMD [ "run.py" ]
+#COPY source directory file to destination location
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python","run.py"]
+
+
